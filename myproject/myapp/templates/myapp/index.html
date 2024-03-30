@@ -1,1 +1,28 @@
-<h1> hello world </h1>
+{% extends 'myapp/base.html' %}
+
+
+{% block content %}                                                                            <!-- content unique to each page -->
+
+    <body>
+
+        <br>
+        <br>
+
+        <div class="text-center">
+
+            <h3> RecordX... Xpert Solutions for Record Management! </h3>
+
+            <br>
+
+            <h5> Elevate Your Data Management Game! </h5>
+
+            <hr>
+            <br>
+
+            <a class="btn btn-primary" type="button" href="{% url '' %}"> Create your account </a>
+
+        </div>
+
+    </body> 
+
+{% endblock %}
