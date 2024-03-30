@@ -1,0 +1,50 @@
+{% load static %}                                                                                         <!-- extend css file -->
+
+<!DOCTYPE html>
+
+<html>
+
+
+    <head> 
+    
+        <meta charset="utf-8">
+        
+        <title> Project </title>
+        
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/flatly/bootstrap.min.css">   <!-- theme from bootswatch.com -->
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">                       <!-- linking styles.css file -->
+    
+    
+    </head>
+    
+    <body>
+        
+        <!-- navbar --> 
+        
+        <div class="container">
+            
+            <br>
+            
+            <!--  -->
+            
+            {% block content %}                                                                            <!-- content unique to each page -->
+
+        
+
+
+            {% endblock %}
+            
+            
+            
+        </div>
+    
+        <script src="{% static 'js/app.js' %}"></script>                                                     <!-- linking app.js --> 
+            
+            
+    
+    </body>
+
+
+
+</html>
