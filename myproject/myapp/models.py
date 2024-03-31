@@ -19,7 +19,8 @@ class Record(models.Model):
     province = models.CharField(max_length=200)
 
     country = models.CharField(max_length=125)
-
+    
+    objects = models.Manager()
 
     def __str__(self):
 

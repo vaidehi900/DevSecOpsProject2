@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
+from .models import Record
+
 # Create your views here.
 
 # - Homepage 
@@ -73,14 +75,15 @@ def login(request):
 
 @login_required(login_url='login')
 def dashboard(request):
+    
+    my_records = Record.objects.all()
 
+    context = {'records': my_records}
 
-    return render(request, 'myapp/dashboard.html')
+    return render(request, 'myapp/dashboard.html', context=context)
     
 
 
-
-  
 # - User logout
 
 def logout(request):
@@ -88,4 +91,7 @@ def logout(request):
     auth.logout(request)
 
     return redirect("login")
+
+
+
 
