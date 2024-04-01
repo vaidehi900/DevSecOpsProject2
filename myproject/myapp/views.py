@@ -95,6 +95,7 @@ def logout(request):
 
 # - Create a record 
 
+
 @login_required(login_url='login')
 def create(request):
     
@@ -114,6 +115,33 @@ def create(request):
     context = {'form': form}
 
     return render(request, 'myapp/create.html', context=context)
+    
+    
+    
+# - Update a record 
+
+@login_required(login_url='login')
+def update(request, pk):
+
+    record = Record.objects.get(id=pk)
+
+    form = UpdateRecordForm(instance=record)
+
+    if request.method == 'POST':
+
+        form = UpdateRecordForm(request.POST, instance=record)
+
+        if form.is_valid():
+
+            form.save()
+
+            
+
+            return redirect("dashboard")
+        
+    context = {'form':form}
+
+    return render(request, 'myapp/update.html', context=context)
 
 
 

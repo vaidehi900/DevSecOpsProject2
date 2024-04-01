@@ -15,7 +15,11 @@ urlpatterns = [
     
     path('dashboard', views.dashboard, name='dashboard'),
     
-     path('create', views.create, name="create"), 
+    path('create', views.create, name="create"), 
+     
+    path('update/<int:pk>', views.update, name='update'),
+    
+    
     
     
 ]
