@@ -142,6 +142,18 @@ def update(request, pk):
     context = {'form':form}
 
     return render(request, 'myapp/update.html', context=context)
+    
+
+# - Read / View a singular record
+
+@login_required(login_url='login')
+def singular_record(request, pk):
+
+    all_records = Record.objects.get(id=pk)
+
+    context = {'record':all_records}
+
+    return render(request, 'myapp/view.html', context=context)
 
 
 
