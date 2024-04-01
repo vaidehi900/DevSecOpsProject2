@@ -113,7 +113,7 @@ def create(request):
 
     context = {'form': form}
 
-    return render(request, 'myapp/create-record.html', context=context)
+    return render(request, 'myapp/create.html', context=context)
 
 
 

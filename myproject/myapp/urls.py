@@ -13,10 +13,9 @@ urlpatterns = [
     
     #CRUD
     
-     path('dashboard', views.dashboard, name='dashboard'),
+    path('dashboard', views.dashboard, name='dashboard'),
     
-    
-    
+     path('create', views.create, name="create"), 
     
     
 ]
