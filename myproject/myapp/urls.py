@@ -21,7 +21,7 @@ urlpatterns = [
     
     path('record/<int:pk>', views.singular_record, name="record"),  
     
-    
+    path('delete/<int:pk>', views.delete, name="delete"),
     
     
 ]
