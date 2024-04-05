@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%g*y2n=(y6_g$v%zpn8x(o!xh4d%b7axv*r08&xg9#qd9jh0fo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['86d51b21b2c646e481a24cf768ca8dba.vfs.cloud9.eu-west-1.amazonaws.com']
+ALLOWED_HOSTS = ['86d51b21b2c646e481a24cf768ca8dba.vfs.cloud9.eu-west-1.amazonaws.com','x23208937-project-env.eba-mbcbru94.eu-west-1.elasticbeanstalk.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://86d51b21b2c646e481a24cf768ca8dba.vfs.cloud9.eu-west-1.amazonaws.com']
 
