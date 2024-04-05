@@ -1,0 +1,28 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto17  # Updated runtime version
+
+  pre_build:
+    commands:
+      - cd myproject  # Change directory to myproject
+      - yum update -y     # Equivalent to apt-get update
+      - yum install -y jq # Install jq using yum package manager
+      - retry_count=3
+      - for i in $(seq 1 $retry_count); do wget https://archive.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz && break || sleep 10; done
+      - tar xzf apache-maven-3.5.4-bin.tar.gz || true
+      - ln -s apache-maven-3.5.4 maven
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
+      - mv sonar-scanner-3.3.0.1492-linux /sonar-scanner
+      - export PATH=$PATH:/sonar-scanner/bin/
+
+  build:
+    commands:
+      - cd myproject  # Change directory to myproject
+      - find / -name pom.xml -exec mv {} ./pom.xml \; || true  # Move all pom.xml files to root
+      - mvn sonar:sonar -Dsonar.login=b8ed79b8cbeb88f51ced64c5976c55a449ee604f -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.projectKey=vaidehi900_DevSecOpsProject2 -Dsonar.organization=vaidehi900
+      - sleep 5
+      # Check the HTTP response status code directly
+      - if curl -s -o /dev/null -w "%{http_code}" https://sonarcloud.io/api/qualitygates/project_status?projectKey=vaidehi900_DevSecOpsProject2 != "200"; then exit 1; fi
