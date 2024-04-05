@@ -1,56 +1,46 @@
 {% extends 'myapp/base.html' %}
 
-{% load crispy_forms_tags %}
-
-
 {% block content %}
 
-    <body>
+<body>
 
-        <div class="container bg-light shadow-md p-5 form-layout">
+    <div class="container bg-light shadow-md p-5 form-layout">
 
-            <h3> Login to your account </h3>
+        <h3> Login to your account </h3>
 
-            <hr>
-            <br>
+        <hr>
+        <br>
 
-            <form method="POST" autocomplete="off">
+        <form method="POST" autocomplete="off">
 
-                {% csrf_token %}
+            {% csrf_token %}
 
-                {{form.username|as_crispy_field}}
-
-                <br>
-
-                {{form.password|as_crispy_field}}
-
-                <br>
-
-                <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Login &nbsp; <i class="fa fa-key" aria-hidden="true"></i> </button>
-
-
-            </form>
-
-            <br>
-
-            <div class="text-center">
-
-                <p> Don't have an account? </p> <a href="{% url 'register' %}"> Register </a>
-
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="id_username" name="username" value="{{ form.username.value }}">
             </div>
 
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="id_password" name="password">
+            </div>
 
-        </div>
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Login &nbsp; <i class="fa fa-key" aria-hidden="true"></i> </button>
+
+        </form>
 
         <br>
 
-    </body>
+        <div class="text-center">
+
+            <p> Don't have an account? </p> <a href="{% url 'register' %}"> Register </a>
+
+        </div>
+
+    </div>
+
+    <br>
+
+</body>
 
 {% endblock %}
-
-
-
-
-
-
-
