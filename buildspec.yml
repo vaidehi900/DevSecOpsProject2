@@ -14,7 +14,7 @@ phases:
     commands:
       - cd myproject  # Change directory to myproject
       - python --version  # Print Python version for verification
-      - pylint manage.py || true  # Run pylint on manage.py and ignore exit status
+      - cd myproject && pylint manage.py || true  # Run pylint on manage.py and ignore exit status
 
 artifacts:
   files:
